@@ -1,0 +1,19 @@
+{
+  "name": "sample-microservice",
+  "version": "1.2.0",
+  "description": "Sample microservice for DevOps Copilot AI repository inspector verification",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "eslint": "^8.57.0"
+  }
+}

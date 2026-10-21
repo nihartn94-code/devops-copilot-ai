@@ -180,7 +180,21 @@ class RepoInspectorService:
     @classmethod
     def _get_git_status(cls, repo_path: Path) -> Dict[str, Any]:
         git_dir = repo_path / ".git"
-        if not git_dir.exists():
+        is_git = git_dir.exists()
+        if not is_git:
+            try:
+                res = subprocess.run(
+                    ["git", "rev-parse", "--is-inside-work-tree"],
+                    cwd=str(repo_path),
+                    capture_output=True,
+                    text=True,
+                    timeout=5
+                )
+                is_git = (res.returncode == 0 and res.stdout.strip() == "true")
+            except Exception:
+                is_git = False
+
+        if not is_git:
             return {
                 "is_git_repo": False,
                 "message": "Directory is not a git repository."
