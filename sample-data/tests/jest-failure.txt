@@ -1,0 +1,37 @@
+FAIL src/components/BuildStatusBadge.test.tsx
+  ● BuildStatusBadge › renders failed state with appropriate error icon
+
+    expect(received).toHaveTextContent(expected)
+
+    Expected substring: "Build Failed"
+    Received string:    "Build Pending"
+
+      24 |     render(<BuildStatusBadge status="failure" />);
+      25 |     const badge = screen.getByTestId('status-badge');
+    > 26 |     expect(badge).toHaveTextContent('Build Failed');
+         |                   ^
+      27 |   });
+      28 | });
+
+      at Object.toHaveTextContent (src/components/BuildStatusBadge.test.tsx:26:19)
+
+  ● BuildStatusBadge › applies red background class on failure
+
+    expect(received).toContain(expected)
+
+    Expected substring: "bg-red-500"
+    Received string:    "inline-flex items-center px-2 py-1 rounded text-xs bg-yellow-500 text-white"
+
+      32 |     render(<BuildStatusBadge status="failure" />);
+      33 |     const badge = screen.getByTestId('status-badge');
+    > 34 |     expect(badge.className).toContain('bg-red-500');
+         |                             ^
+      35 |   });
+
+Test Suites: 1 failed, 3 passed, 4 total
+Tests:       2 failed, 14 passed, 16 total
+Snapshots:   0 total
+Time:        2.814 s
+Ran all test suites.
+npm error Lifecycle script `test` failed with error:
+npm error code 1

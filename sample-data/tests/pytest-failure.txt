@@ -1,0 +1,45 @@
+============================= test session starts =============================
+platform linux -- Python 3.12.2, pytest-8.1.1, pluggy-1.4.0
+rootdir: /workspace/api-service
+configfile: pyproject.toml
+plugins: asyncio-0.23.6, anyio-4.3.0
+collected 5 items
+
+tests/test_auth.py .                                                     [ 20%]
+tests/test_endpoints.py .F.                                              [ 80%]
+tests/test_database.py F                                                 [100%]
+
+================================== FAILURES ===================================
+___________________________ test_create_user_invalid ___________________________
+
+    def test_create_user_invalid(client):
+        payload = {"username": "admin", "email": "invalid-email-format"}
+        response = client.post("/api/v1/users", json=payload)
+>       assert response.status_code == 422
+E       assert 500 == 422
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_endpoints.py:45: AssertionError
+----------------------------- Captured stderr call -----------------------------
+ERROR:    Unhandled Exception in endpoint /api/v1/users: EmailStr validation failed
+Traceback (most recent call last):
+  File "/workspace/api-service/app/routers/users.py", line 22, in create_user
+    validated = UserSchema(**payload)
+pydantic.errors.ValidationError: 1 validation error for UserSchema
+email
+  value is not a valid email address (type=value_error.email)
+____________________________ test_database_connection __________________________
+
+    @pytest.mark.asyncio
+    async def test_database_connection():
+>       conn = await get_db_pool()
+>       assert conn.is_connected() is True
+E       ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 5432)
+
+tests/test_database.py:18: ConnectionRefusedError
+----------------------------- Captured log call -------------------------------
+CRITICAL root:database.py:31 Could not connect to PostgreSQL instance at 127.0.0.1:5432. Is PostgreSQL running?
+=========================== short test summary info ============================
+FAILED tests/test_endpoints.py::test_create_user_invalid - assert 500 == 422
+FAILED tests/test_database.py::test_database_connection - ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 5432)
+========================= 2 failed, 3 passed in 1.42s ==========================

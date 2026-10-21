@@ -1,0 +1,73 @@
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 452B done
+#1 DONE 0.0s
+
+#2 [internal] load .dockerignore
+#2 transferring context: 35B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/python:3.11-slim
+#3 DONE 0.8s
+
+#4 [1/5] FROM docker.io/library/python:3.11-slim@sha256:d8c0b
+#4 CACHED
+
+#5 [2/5] WORKDIR /app
+#5 CACHED
+
+#6 [3/5] COPY requirements.txt .
+#6 DONE 0.1s
+
+#7 [4/5] RUN pip install --no-cache-dir -r requirements.txt
+#7 0.842 Collecting psycopg2-binary==2.9.9
+#7 1.102   Downloading psycopg2_binary-2.9.9-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.0 MB)
+#7 1.455 Collecting cryptography==42.0.5
+#7 1.620   Downloading cryptography-42.0.5.tar.gz (632 kB)
+#7 2.110   Installing build dependencies: started
+#7 4.520   Installing build dependencies: finished with status 'done'
+#7 4.522   Getting requirements to build wheel: started
+#7 5.100   Getting requirements to build wheel: finished with status 'done'
+#7 5.105   Preparing metadata (pyproject.toml): started
+#7 5.512   Preparing metadata (pyproject.toml): finished with status 'done'
+#7 5.620 Building wheels for collected packages: cryptography
+#7 5.621   Building wheel for cryptography (pyproject.toml): started
+#7 7.840   Running setup.py clean for cryptography
+#7 7.910   error: subprocess-exited-with-error
+#7 7.910   
+#7 7.910   × Building wheel for cryptography (pyproject.toml) did not run successfully.
+#7 7.910   │ exit code: 1
+#7 7.910   ╰─> [24 lines of output]
+#7 7.910       running bdist_wheel
+#7 7.910       running build
+#7 7.910       running build_py
+#7 7.910       creating build/lib.linux-x86_64-cpython-311
+#7 7.910       copying src/cryptography/__init__.py -> build/lib.linux-x86_64-cpython-311/cryptography
+#7 7.910       running build_ext
+#7 7.910       cargo build --message-format=json-render-diagnostics --release
+#7 7.910       error: can't find Rust compiler
+#7 7.910       
+#7 7.910       If you are using an outdated pip version, it may not be able to fetch
+#7 7.910       the cryptography precompiled wheel for your platform.
+#7 7.910       Please check https://cryptography.io/en/latest/installation/ for more information.
+#7 7.910       [end of output]
+#7 7.910   
+#7 7.910   note: This error originates from a subprocess, and is likely not a problem with pip.
+#7 7.911   ERROR: Failed building wheel for cryptography
+#7 7.911 ERROR: Could not build wheels for cryptography, which is required to install pyproject.toml-based projects
+#7 ERROR: process "/bin/sh -c pip install --no-cache-dir -r requirements.txt" did not complete successfully: exit code: 1
+------
+ > [4/5] RUN pip install --no-cache-dir -r requirements.txt:
+7.910       error: can't find Rust compiler
+7.910       If you are using an outdated pip version, it may not be able to fetch
+7.910       the cryptography precompiled wheel for your platform.
+7.911 ERROR: Could not build wheels for cryptography, which is required to install pyproject.toml-based projects
+------
+Dockerfile:9
+--------------------
+   7 |     COPY requirements.txt .
+   8 |     
+   9 | >>> RUN pip install --no-cache-dir -r requirements.txt
+  10 |     
+  11 |     COPY . .
+--------------------
+ERROR: failed to solve: process "/bin/sh -c pip install --no-cache-dir -r requirements.txt" did not complete successfully: exit code: 1

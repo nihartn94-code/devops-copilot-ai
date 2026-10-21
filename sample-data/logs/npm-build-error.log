@@ -1,0 +1,27 @@
+> frontend@1.0.0 build
+> tsc -b && vite build
+
+[vite]: Rollup failed to resolve import "@/components/MetricsChart" from "src/pages/Dashboard.tsx".
+src/pages/Dashboard.tsx:8:29 - error TS2307: Cannot find module '@/components/MetricsChart' or its corresponding type declarations.
+
+8 import { MetricsChart } from '@/components/MetricsChart';
+                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/services/api.ts:42:15 - error TS2322: Type 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+
+42   authToken: process.env.API_SECRET_TOKEN,
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/services/api.ts:43:5 - warning TS6133: 'AWS_SECRET_ACCESS_KEY' is declared but its value is never read.
+  Configuring pipeline auth: AKIAIOSFODNN7EXAMPLE:wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+
+Found 2 errors and 1 warning in 2 files.
+Errors  Files
+     1  src/pages/Dashboard.tsx:8
+     1  src/services/api.ts:42
+npm error Lifecycle script `build` failed with error:
+npm error code 2
+npm error path /workspace/devops-dashboard/frontend
+npm error command failed
+npm error command C:\Windows\system32\cmd.exe /d /s /c tsc -b && vite build

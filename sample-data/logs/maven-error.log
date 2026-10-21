@@ -1,0 +1,37 @@
+[INFO] Scanning for projects...
+[INFO] -------------------< com.example.service:auth-service >-------------------
+[INFO] Building auth-service 1.0.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.3.1:resources (default-resources) @ auth-service ---
+[INFO] Copying 3 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.11.0:compile (default-compile) @ auth-service ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 14 source files with javac [debug target 17] to target/classes
+[ERROR] /app/src/main/java/com/example/service/TokenValidator.java:[34,18] cannot find symbol
+  symbol:   method verifySignature(java.lang.String,java.security.PublicKey)
+  location: class com.auth0.jwt.algorithms.Algorithm
+[ERROR] /app/src/main/java/com/example/service/SecurityConfig.java:[52,9] incompatible types: org.springframework.security.web.SecurityFilterChain cannot be converted to void
+[INFO] 2 errors 
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /app/src/main/java/com/example/service/TokenValidator.java:[34,18] cannot find symbol
+  symbol:   method verifySignature(java.lang.String,java.security.PublicKey)
+  location: class com.auth0.jwt.algorithms.Algorithm
+[ERROR] /app/src/main/java/com/example/service/SecurityConfig.java:[52,9] incompatible types: org.springframework.security.web.SecurityFilterChain cannot be converted to void
+[INFO] 2 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.412 s
+[INFO] Finished at: 2026-10-21T04:22:10Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.11.0:compile (default-compile) on project auth-service: Compilation failure: Compilation failure: 
+[ERROR] /app/src/main/java/com/example/service/TokenValidator.java:[34,18] cannot find symbol
+[ERROR]   symbol:   method verifySignature(java.lang.String,java.security.PublicKey)
+[ERROR]   location: class com.auth0.jwt.algorithms.Algorithm
+[ERROR] -> [Help 1]
